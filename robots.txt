@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /main.html
+
+Sitemap: https://clarius-aesthetics.jp/sitemap.xml
