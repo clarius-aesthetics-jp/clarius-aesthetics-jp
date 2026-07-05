@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clarius Aesthetics Japan | Entry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #00AEEF;
+    --navy: #0A1628;
+    --navy-mid: #0D2040;
+    --white: #FFFFFF;
+    --w70: rgba(255,255,255,.70);
+    --w40: rgba(255,255,255,.40);
+    --w15: rgba(255,255,255,.15);
+    --w08: rgba(255,255,255,.08);
+  }
+
+  html, body {
+    height: 100%;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #0A1E40 100%);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: -300px; left: 50%;
+    transform: translateX(-50%);
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(0,174,239,.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .en-notice {
+    position: fixed;
+    top: 1.5rem; right: 1.5rem;
+    font-size: .65rem;
+    color: var(--w40);
+    text-align: right;
+    line-height: 1.6;
+    z-index: 5;
+  }
+  .en-notice a { color: var(--blue); text-decoration: none; }
+  .en-notice a:hover { text-decoration: underline; }
+
+  .gate-wrap {
+    max-width: 720px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .gate-logo {
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: .2em;
+    color: var(--white);
+    opacity: 0;
+    animation: fadeUp .7s ease .1s forwards;
+  }
+  .gate-logo span { color: var(--blue); }
+  .logo-sub {
+    font-size: .62rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--w40);
+    margin-top: .4rem;
+    opacity: 0;
+    animation: fadeUp .7s ease .2s forwards;
+  }
+
+  .gate-heading {
+    margin-top: 2.6rem;
+    opacity: 0;
+    animation: fadeUp .7s ease .3s forwards;
+  }
+  .gate-heading h1 {
+    font-size: clamp(1.3rem, 3.2vw, 1.9rem);
+    font-weight: 700;
+    letter-spacing: .04em;
+    line-height: 1.5;
+  }
+  .gate-heading .ja-title {
+    margin-top: 1rem;
+    font-size: .82rem;
+    color: var(--w70);
+    line-height: 1.9;
+  }
+
+  .divider {
+    width: 48px; height: 2px;
+    background: var(--blue);
+    margin: 2.2rem auto;
+    opacity: 0;
+    animation: fadeUp .7s ease .4s forwards;
+  }
+
+  .gate-question {
+    opacity: 0;
+    animation: fadeUp .7s ease .5s forwards;
+    margin-bottom: 2rem;
+  }
+  .q-ja { font-size: .95rem; font-weight: 500; }
+  .q-en { font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; color: var(--w40); margin-top: .4rem; }
+
+  .gate-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+  }
+
+  .gate-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.1rem 1.6rem;
+    border: 1px solid var(--w15);
+    border-radius: 8px;
+    background: var(--w08);
+    backdrop-filter: blur(6px);
+    text-decoration: none;
+    color: var(--white);
+    text-align: left;
+    transition: border-color .2s, background .2s, transform .2s;
+    opacity: 0;
+    animation: fadeUp .7s ease forwards;
+  }
+  .gate-btn:nth-child(1) { animation-delay: .6s; }
+  .gate-btn:nth-child(2) { animation-delay: .7s; }
+  .gate-btn:nth-child(3) { animation-delay: .8s; }
+
+  .gate-btn:hover {
+    border-color: var(--blue);
+    background: rgba(0,174,239,.10);
+    transform: translateY(-2px);
+  }
+  .gate-btn.primary {
+    border-color: rgba(0,174,239,.5);
+    background: rgba(0,174,239,.12);
+  }
+  .gate-btn.primary:hover { background: rgba(0,174,239,.20); }
+
+  .btn-text { display: flex; flex-direction: column; gap: .3rem; }
+  .btn-ja { font-size: .95rem; font-weight: 600; }
+  .btn-en { font-size: .62rem; letter-spacing: .08em; color: var(--w40); }
+  .btn-arrow { font-size: 1.1rem; color: var(--blue); flex-shrink: 0; }
+
+  .gate-footer {
+    margin-top: 3rem;
+    font-size: .58rem;
+    color: var(--w40);
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeUp .7s ease .9s forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 480px) {
+    .en-notice { position: static; text-align: center; margin-bottom: 1.5rem; }
+    body { display: block; padding-top: 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="en-notice">
+  This site is in Japanese for healthcare<br>
+  professionals in Japan. For English, please visit<br>
+  <a href="https://clarius.com" target="_blank" rel="noopener">clarius.com</a>
+</div>
+
+<div class="gate-wrap">
+
+  <div class="gate-logo">CLARIUS <span>AESTHETICS</span> JAPAN</div>
+  <div class="logo-sub">for Aesthetic Medicine</div>
+
+  <div class="gate-heading">
+    <h1>本サイトは美容医療専門の<br>医療従事者向けサイトです</h1>
+    <div class="ja-title">
+      レピオス・ソリューションズ合同会社が運営する、Clarius Mobile Health社<br>
+      美容皮膚科・美容形成外科領域における日本正規販売代理店の公式サイトです。
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="gate-question">
+    <div class="q-ja">あなたの職種をお選びください</div>
+    <div class="q-en">Please select your category to continue</div>
+  </div>
+
+  <div class="gate-buttons">
+
+    <!-- 美容医療従事者 → メインサイトへ -->
+    <a href="main.html" class="gate-btn primary">
+      <div class="btn-text">
+        <span class="btn-ja">美容皮膚科・美容形成外科の医療従事者</span>
+        <span class="btn-en">Aesthetic Medicine / Plastic Surgery Professional</span>
+      </div>
+      <span class="btn-arrow">→</span>
+    </a>
+
+    <!-- 美容医療以外の医療従事者 → 丸文 -->
+    <a href="https://www.marubun.co.jp/products/51908/" class="gate-btn" target="_blank" rel="noopener">
+      <div class="btn-text">
+        <span class="btn-ja">美容医療以外の医療従事者</span>
+        <span class="btn-en">Healthcare Professional (Other Specialty)</span>
+      </div>
+      <span class="btn-arrow">→</span>
+    </a>
+
+    <!-- 医療従事者ではない → clarius.com -->
+    <a href="https://clarius.com" class="gate-btn" target="_blank" rel="noopener">
+      <div class="btn-text">
+        <span class="btn-ja">医療従事者ではない</span>
+        <span class="btn-en">Not a Healthcare Professional</span>
+      </div>
+      <span class="btn-arrow">→</span>
+    </a>
+
+  </div>
+
+  <div class="gate-footer">
+    © 2026 Lepios Solutions LLC — Authorized Distributor of Clarius Mobile Health<br>
+    for Aesthetic Medicine in Japan（美容皮膚科・美容形成外科領域）
+  </div>
+
+</div>
+
+</body>
+</html>
